@@ -130,7 +130,7 @@ class Model:
 
     def plot(self):
         # Generate figure
-        fig = plt.figure(figsize=(6,8))
+        fig = plt.figure(figsize=(6,9))
         fig.clf()
         fig.patch.set_facecolor('lightcyan')
         ax = fig.subplots(4,1)
@@ -167,8 +167,17 @@ class Model:
         ax[3].set_title('Learning Signals = delta weight')
         fig.show()
 
-
-
+class Model_E(Model):
+    # override
+    def __init__(self, alpha_F=0.7, alpha_P=0.7, alpha_E1=0.3, alpha_E2 = 0.3):
+        super(Model_E, self).__init__()
+        np.random.seed()
+        self.Schedule = []
+        self.alpha_F = alpha_F
+        self.alpha_P = alpha_P
+        self.alpha_E1 = alpha_E1
+        self.alpha_E2 = alpha_E2
+        self.wipeMemory()
 
 t = Model()
 t.generateSchedule('F20E20*')
